@@ -1,0 +1,13 @@
+{
+  "talentDiamond": "0xecEb447a4A1568d277031700b96eDA2Bda515eBD",
+  "facets": {
+    "airdropFacet": "0x790FD46D3BF4e56D8c9d71Cf4CeD8950c73ea4DB",
+    "castVoteFacet": "0x8082a0c970cd9e0211E4C989C1723e98738130cb",
+    "dataFacet": "0x06A15a9Aef6f60BB8E9759663Ffa809Dc04d2172",
+    "finalizeFacet": "0x3627Ba7cfbf9E6f5dEBA7a452cd3F0057048A10f",
+    "removeSubmissionFacet": "0x6f24894Db3C762715c2C3553f3204c53efCa78a9",
+    "startShowFacet": "0x807cDB2C5c53834aD27622840A99A1939bacD927",
+    "submitEntryFacet": "0xF5f8e3879dc7a629500E9Fbc3b1fB3A236F0A4D8",
+    "utilitiesFacet": "0x8046A8602998CA4390FC77A9F0E002D80DD560A4"
+  }
+}
