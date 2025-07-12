@@ -9,12 +9,6 @@ import {
   verifyContract,
 } from "./utils";
 
-// Gas configuration
-const GAS_CONFIG = {
-  gasLimit: 15000000, // 15M gas limit
-  gasPrice: ethers.parseUnits("1.5", "gwei"), // 1.5 gwei
-};
-
 async function main() {
   const existingSelectors: BytesLike[] = [];
   const [deployer] = await ethers.getSigners();
@@ -45,11 +39,12 @@ async function main() {
   };
 
   console.log(deployParams);
-
   console.log("\nDeploying libraries...");
 
   // Deploy main facets
   console.log("\nDeploying main facets...");
+  const { contract: abortShowFacet, contractName: abortShowFacetName } =
+    await deployContract("AbortShowFacet");
   const { contract: airdropFacet, contractName: airdropFacetName } =
     await deployContract("AirdropFacet");
   const { contract: castVoteFacet, contractName: castVoteFacetName } =
@@ -69,6 +64,7 @@ async function main() {
   const { contract: utilitiesFacet, contractName: utilitiesFacetName } =
     await deployContract("UtilitiesFacet");
 
+  const abortShowFacetAddress = await abortShowFacet.getAddress();
   const airdropFacetAddress = await airdropFacet.getAddress();
   const castVoteFacetAddress = await castVoteFacet.getAddress();
   const dataFacetAddress = await dataFacet.getAddress();
@@ -87,6 +83,11 @@ async function main() {
   const talentDiamondAddress = await talentDiamond.getAddress();
   console.log("TalentDiamond deployed to:", talentDiamondAddress);
 
+  const abortShowFacetSelectors = await getSelectors(
+    abortShowFacet,
+    abortShowFacetName,
+    existingSelectors
+  );
   const airdropFacetSelectors = await getSelectors(
     airdropFacet,
     airdropFacetName,
@@ -130,6 +131,11 @@ async function main() {
 
   // Prepare diamond cut for main facets
   const mainFacetCuts = [
+    {
+      target: abortShowFacetAddress,
+      action: 0,
+      selectors: abortShowFacetSelectors,
+    },
     {
       target: airdropFacetAddress,
       action: 0,
@@ -175,6 +181,7 @@ async function main() {
   //Perform diamond cut for main facets
   console.log("\nPerforming diamond cut for main facets...");
 
+  await verifyContract(abortShowFacetAddress);
   await verifyContract(airdropFacetAddress);
   await verifyContract(castVoteFacetAddress);
   await verifyContract(dataFacetAddress);
@@ -194,6 +201,7 @@ async function main() {
   const diamondInfo = {
     talentDiamond: talentDiamondAddress,
     facets: {
+      abortShowFacet: abortShowFacetAddress,
       airdropFacet: airdropFacetAddress,
       castVoteFacet: castVoteFacetAddress,
       dataFacet: dataFacetAddress,

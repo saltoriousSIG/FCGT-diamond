@@ -8,7 +8,7 @@ contract StartShowFacet is Ownable {
     function startShow(uint256 _start_time, uint256 _entry_closed_time, uint256 _voting_closed_time, string calldata name, string calldata descripiton, string calldata tags) public onlyOwner { 
         LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
         uint256 current_show_id = gs.current_show_id;
-        gs.shows[current_show_id].state = LibTalentDiamond.ShowState.STARTED;
+        gs.shows[current_show_id].state = LibTalentDiamond.ShowState.VOTING;
         gs.shows[current_show_id].start_time = _start_time;
         gs.shows[current_show_id].entry_closed_time = _entry_closed_time;
         gs.shows[current_show_id].voting_closed_time = _voting_closed_time;

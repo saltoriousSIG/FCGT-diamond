@@ -50,7 +50,10 @@ contract CastVoteFacet is ReentrancyGuard {
 
         gs.shows[_show_id].votes.push(_vote);
         gs.shows[_show_id].votes_cast[msg.sender]++;
+
+        gs.shows[_show_id].votes_by_id[_vote.selected_entry_id].push(_vote);
         gs.shows[_show_id].num_votes_by_id[_vote.selected_entry_id]++;
+
         emit VoteCast(_show_id, _vote.selected_entry_id, msg.sender);
     } 
 }

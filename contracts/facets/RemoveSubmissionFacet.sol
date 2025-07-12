@@ -14,7 +14,7 @@ contract RemoveSubmissionFacet is Ownable, ReentrancyGuard {
 
         IERC20 token = IERC20(tbs.USDC_TOKEN);
 
-        require(gs.shows[_show_id].state == LibTalentDiamond.ShowState.STARTED, "Incorrect State"); 
+        require(gs.shows[_show_id].state == LibTalentDiamond.ShowState.VOTING, "Incorrect State"); 
         require(token.balanceOf(address(this)) >= tbs.token_entry_price, "not enough tokens");
 
         LibTalentDiamond.Entry memory submission = gs.shows[_show_id].submissions_by_id[_entry_id];

@@ -9,7 +9,7 @@ contract SubmitEntryFacet {
         LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
         LibTalentDiamond.TalentBaseStorage storage tbs = LibTalentDiamond.getTalentBaseStorage();
 
-        require(gs.shows[_show_id].state == LibTalentDiamond.ShowState.STARTED, "Show not elligible for submissions");
+        require(gs.shows[_show_id].state == LibTalentDiamond.ShowState.VOTING, "Show not elligible for submissions");
         require(block.timestamp >= gs.shows[_show_id].start_time && block.timestamp < gs.shows[_show_id].entry_closed_time, "submitting period closed");
         require(gs.shows[_show_id].submissions_by_id[entry.entry_id].user_address == address(0), "Entry ID already exists");
         require(gs.user_entry[_show_id][msg.sender].user_address == address(0), "Already submitted for this show");

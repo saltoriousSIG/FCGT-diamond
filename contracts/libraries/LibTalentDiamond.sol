@@ -3,7 +3,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 library LibTalentDiamond {
      enum ShowState {
-        STARTED,
         VOTING,
         CLOSED
     }
@@ -56,8 +55,11 @@ library LibTalentDiamond {
         string entry_id;
         address user_address;
         string submission_link;
+        string submission_hls_link;
+        string submission_thumbnail;
         string submission_name;
         string submission_descripton;
+        string submission_cast_hash;
     }
 
     struct Show { 
@@ -69,6 +71,7 @@ library LibTalentDiamond {
         mapping(string => Entry) submissions_by_id;
         mapping(address => Entry) submissions_by_address;
         mapping(string => uint256) num_votes_by_id;
+        mapping(string => Vote[]) votes_by_id;
         mapping(address => bool) has_voted;
         mapping(address => uint256) votes_cast;
         mapping(address => bool) used_tlnt_vote;

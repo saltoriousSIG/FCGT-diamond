@@ -1,13 +1,14 @@
 {
-  "talentDiamond": "0xecEb447a4A1568d277031700b96eDA2Bda515eBD",
+  "talentDiamond": "0xe9db0E4a78d2564233639cCD65101E8cd3E9925D",
   "facets": {
-    "airdropFacet": "0x790FD46D3BF4e56D8c9d71Cf4CeD8950c73ea4DB",
-    "castVoteFacet": "0x8082a0c970cd9e0211E4C989C1723e98738130cb",
-    "dataFacet": "0x06A15a9Aef6f60BB8E9759663Ffa809Dc04d2172",
-    "finalizeFacet": "0x3627Ba7cfbf9E6f5dEBA7a452cd3F0057048A10f",
-    "removeSubmissionFacet": "0x6f24894Db3C762715c2C3553f3204c53efCa78a9",
-    "startShowFacet": "0x807cDB2C5c53834aD27622840A99A1939bacD927",
-    "submitEntryFacet": "0xF5f8e3879dc7a629500E9Fbc3b1fB3A236F0A4D8",
-    "utilitiesFacet": "0x8046A8602998CA4390FC77A9F0E002D80DD560A4"
+    "abortShowFacet": "0xf7F702829B48148BbAb67071D0B57820dc057FC7",
+    "airdropFacet": "0x16B45CC614A9f8c270c75e30319842EC65cD150D",
+    "castVoteFacet": "0x1dcd7ae0b50567a408B38f1e4B3E8F66bD9FBad9",
+    "dataFacet": "0x9a199AeE68c6e20C55AFBffdC709FFffCccBd6f3",
+    "finalizeFacet": "0x8F49e8c771Ea791549C8008cC29D4BaeA2956160",
+    "removeSubmissionFacet": "0x2C3e6C396792C791671f46Aa23D143031E9625EA",
+    "startShowFacet": "0x97b55F4453480b88EEb7163a72Da5397796E2733",
+    "submitEntryFacet": "0xc8FD88cbEFf4f80faf057ef42A16b0E4d488AbE0",
+    "utilitiesFacet": "0xbEF9fF5723990613279d7ce68DFc141cC7A5A928"
   }
 }

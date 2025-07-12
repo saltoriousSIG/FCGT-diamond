@@ -49,6 +49,11 @@ contract DataFacet {
         }
     } 
 
+    function fetch_submission_by_id(uint256 _show_id, string calldata _entry_id)  public view returns (LibTalentDiamond.Entry memory entry) { 
+        LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
+        entry = gs.shows[_show_id].submissions_by_id[_entry_id];
+    }
+
     function fetch_entry_by_address(uint256 _show_id, address _user) public view returns(LibTalentDiamond.Entry memory submission) { 
         LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
         submission = gs.user_entry[_show_id][_user];
@@ -62,5 +67,15 @@ contract DataFacet {
     function fetch_current_show_id() public view returns(uint256 id) { 
         LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
         id = gs.current_show_id;
+    }
+
+    function fetch_votes_by_entry_id(uint256 _show_id, string calldata _entry_id) public view returns(LibTalentDiamond.Vote[] memory vote) { 
+        LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
+        vote = gs.shows[_show_id].votes_by_id[_entry_id];
+    }
+
+    function fetch_num_votes_by__entry_id(uint256 _show_id, string calldata _entry_id) public view returns(uint256 num_votes) { 
+        LibTalentDiamond.GameStorage storage gs = LibTalentDiamond.getGameStorage();
+        num_votes = gs.shows[_show_id].num_votes_by_id[_entry_id];
     }
 }
